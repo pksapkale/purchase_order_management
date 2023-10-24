@@ -81,19 +81,23 @@ export class AppComponent {
 
   // For getting docket list
   async getDocketList() {
+    this.docketListComponent.loading = true;
     return new Promise((res, rej) => {
       this._docketService.getDocketList.subscribe({
         next: (data) => {
           if (data.status) {
             this.docketList = data.data;
+            this.docketListComponent.loading = false;
             res(true);
           } else {
             console.log('Error in getting docket list data');
+            this.docketListComponent.loading = false;
             rej();
           }
         },
         error: (err) => {
           console.log('Error in getting docket list, ----->>>>>', err);
+          this.docketListComponent.loading = false;
           rej();
         },
       });
@@ -109,6 +113,7 @@ export class AppComponent {
 
   // For handle delete click
   deleteClickHandler(id: number) {
+    this.docketListComponent.loading = true;
     let obj = {
       docket_id: id
     }
@@ -119,10 +124,12 @@ export class AppComponent {
         }
         else {
           console.log('Error in deleting docket, Error ----->>>>>');
+          this.docketListComponent.loading = false;
         }
       },
       error: err => {
         console.log('Error in deleting docket, Error ----->>>>>', err);
+        this.docketListComponent.loading = false;
       }
     });
   }

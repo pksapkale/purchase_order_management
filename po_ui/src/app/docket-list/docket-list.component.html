@@ -3,7 +3,7 @@
   <thead>
     <tr>
       <th scope="col" *ngFor="let header of docketHeader">
-        <ng-container *ngIf="header !== 'docket_id'">   <!-- We will not show docket_id -->
+        <ng-container *ngIf="header !== 'docket_id'"> <!-- We will not show docket_id -->
           {{ header | titlecase }}
         </ng-container>
       </th>
@@ -12,18 +12,13 @@
     </tr>
   </thead>
 
-  
   <!-- Table body section -->
   <tbody>
-    <!-- Spinner -->
-    <div *ngIf="loading" class="spinner-border text-light" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
     <!-- Table Body's Data -->
     <ng-container *ngIf="!loading">
       <tr *ngFor="let field of docketList;">
         <td *ngFor="let col of docketHeader">
-          <ng-container *ngIf="col !== 'docket_id'">  <!-- We will not show docket_id -->
+          <ng-container *ngIf="col !== 'docket_id'"> <!-- We will not show docket_id -->
             {{ field[col] }}
           </ng-container>
         </td>
@@ -33,3 +28,32 @@
     </ng-container>
   </tbody>
 </table>
+
+
+<!-- Spinner -->
+<div *ngIf="loading" class="text-center">
+  <span class="spinner-border text-light" role="status"></span>
+</div>
+
+<button class="d-none" id="confirm-box-open-button" data-bs-toggle="modal" data-bs-target="#confirm-modal"></button>
+
+<div class="modal fade" id="confirm-modal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Docket</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        Are you sure, you want to delete this docket
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger d-flex align-items-center" (click)="confirmDelete()" data-bs-dismiss="modal">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>

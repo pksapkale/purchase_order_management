@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Docket } from '../model/Docket';
 
 @Component({
@@ -6,10 +6,12 @@ import { Docket } from '../model/Docket';
   templateUrl: './docket-list.component.html',
   styleUrls: ['./docket-list.component.css'],
 })
-export class DocketListComponent {
+export class DocketListComponent implements OnInit {
   docketList: any[] = [];
   docketHeader: string[] = [];
-  loading: boolean = false;
+  loading: boolean = true; // We are handling this variable from app-component-ts
+  currentDocketId: number = -1;
+  confirmBoxOpenButton: any;
 
   @Output() editClickEmitter: EventEmitter<number> = new EventEmitter<number>();
   @Output() deleteClickEmitter: EventEmitter<number> = new EventEmitter<number>();
@@ -21,10 +23,25 @@ export class DocketListComponent {
     }
   }
 
-  deleteClickHandler(id: number) {
-    this.deleteClickEmitter.emit(id);
+  ngOnInit(): void {
+    this.confirmBoxOpenButton = document.getElementById('confirm-box-open-button');
+    let confirmModal = document.getElementById('docket-modal');
+    confirmModal?.addEventListener('hidden.bs.modal', (event: any) => {  // On modal close resetting current docket
+      this.currentDocketId = -1;
+    });
   }
-  
+
+  confirmDelete() {
+    if (this.currentDocketId > -1) {
+      this.deleteClickEmitter.emit(this.currentDocketId);
+    }
+  }
+
+  deleteClickHandler(id: number) {
+    this.currentDocketId = id;
+    this.confirmBoxOpenButton.click();
+  }
+
   editClickHandler(id: number) {
     this.editClickEmitter.emit(id);
   }
