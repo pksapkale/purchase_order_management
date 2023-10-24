@@ -1,0 +1,94 @@
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <form [formGroup]="docketForm" (ngSubmit)="docketFormSubmit()">
+
+            <div class="modal-header">
+                <h5 class="modal-title">{{ currentDocket ? 'Update Docket' : 'Insert New Docket' }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <!-- Name -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" formControlName="name" id="name" 
+                        [ngClass]="((getControl('name'))?.dirty || ( getControl('name'))?.touched) && 
+                        (getControl('name')?.hasError('required')) ? 'is-invalid' : ''"    
+                    />
+                </div>
+
+                <!-- Start Time -->
+                <div class="mb-3">
+                    <label for="start_time" class="form-label">Start Time</label>
+                    <input type="time" class="form-control" formControlName="start_time" id="start_time"
+                        [ngClass]="((getControl('start_time'))?.dirty || ( getControl('start_time'))?.touched) && 
+                        (getControl('start_time')?.hasError('required')) ? 'is-invalid' : ''" 
+                    />
+                </div>
+
+                <!-- End Time -->
+                <div class="mb-3">
+                    <label for="end_time" class="form-label">End Time</label>
+                    <input type="time" class="form-control" formControlName="end_time" id="end_time"
+                        [ngClass]="((getControl('end_time'))?.dirty || ( getControl('end_time'))?.touched) && 
+                        (getControl('end_time')?.hasError('required')) ? 'is-invalid' : ''" 
+                    />
+                </div>
+
+                <!-- No Of Houts worked -->
+                <div class="mb-3">
+                    <label for="no_of_hours_worked" class="form-label">No Of Houts worked</label>
+                    <input type="number" class="form-control" formControlName="no_of_hours_worked" id="no_of_hours_worked"
+                        [ngClass]="((getControl('no_of_hours_worked'))?.dirty || ( getControl('no_of_hours_worked'))?.touched) && 
+                        (getControl('no_of_hours_worked')?.hasError('required')) ? 'is-invalid' : ''" 
+                    />
+                </div>
+
+                <!-- Rate Per hour -->
+                <div class="mb-3">
+                    <label for="rate_per_hour" class="form-label">Rate Per hour</label>
+                    <input type="number" class="form-control" formControlName="rate_per_hour" id="rate_per_hour"
+                        [ngClass]="((getControl('rate_per_hour'))?.dirty || ( getControl('rate_per_hour'))?.touched) && 
+                        (getControl('rate_per_hour')?.hasError('required')) ? 'is-invalid' : ''" 
+                    />
+                </div>
+
+                <!-- Supplier Name -->
+                <div class="mb-3">
+                    <label for="supplier_name" class="form-label">Supplier Name</label>
+                    <select class="form-select" formControlName="supplier_name" id="supplier_name" (change)="changeSupplierHandle($event)" [ngClass]="((getControl('supplier_name'))?.dirty || ( getControl('supplier_name'))?.touched) && 
+                    (getControl('supplier_name')?.hasError('required')) ? 'is-invalid' : ''" >
+                        <option selected disabled [value]="null">None</option>
+                        <option *ngFor="let supplier of supplierArr" [value]="supplier">{{ supplier }}</option>
+                    </select>
+                </div>
+
+                <!-- Purchase Order -->
+                <div class="mb-3">
+                    <label for="purchase_order" class="form-label">Purchase Order</label>
+                    <select class="form-select" formControlName="purchase_order" id="purchase_order" [ngClass]="((getControl('purchase_order'))?.dirty || ( getControl('purchase_order'))?.touched) && 
+                    (getControl('purchase_order')?.hasError('required')) ? 'is-invalid' : ''" >
+                        <option selected disabled [value]="null">None</option>
+                        <option *ngFor="let po of purchaseOrderArr" [value]="po.value">{{ po.name }}</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button id="close-btn" type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success d-flex align-items-center" [disabled]="loading ? true : false">
+                    <div *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <div>
+                        {{ currentDocket && currentDocket.docket_id ? 'Update' : 'Insert' }}
+                    </div>
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>

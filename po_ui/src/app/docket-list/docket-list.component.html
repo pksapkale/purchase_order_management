@@ -1,0 +1,35 @@
+<table class="table table-info">
+  <!-- Table headers section -->
+  <thead>
+    <tr>
+      <th scope="col" *ngFor="let header of docketHeader">
+        <ng-container *ngIf="header !== 'docket_id'">   <!-- We will not show docket_id -->
+          {{ header | titlecase }}
+        </ng-container>
+      </th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  
+  <!-- Table body section -->
+  <tbody>
+    <!-- Spinner -->
+    <div *ngIf="loading" class="spinner-border text-light" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <!-- Table Body's Data -->
+    <ng-container *ngIf="!loading">
+      <tr *ngFor="let field of docketList;">
+        <td *ngFor="let col of docketHeader">
+          <ng-container *ngIf="col !== 'docket_id'">  <!-- We will not show docket_id -->
+            {{ field[col] }}
+          </ng-container>
+        </td>
+        <td><i class="bi bi-pencil-square pointer" (click)="editClickHandler(field.docket_id)"></i></td>
+        <td><i class="bi bi-trash pointer" (click)="deleteClickHandler(field.docket_id)"></i></td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
