@@ -4,7 +4,7 @@
   "description": "",
   "main": "po.js",
   "scripts": {
-    "start": "nodemon po.js",
+    "start": "node po.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
