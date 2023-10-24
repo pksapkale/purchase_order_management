@@ -1,0 +1,5 @@
+PORT=3000
+DB_HOST=localhost
+DB_USER=root
+DB_DATABASE=po_management
+DB_PASSWORD=put_our_db_password_here
