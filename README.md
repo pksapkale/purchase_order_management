@@ -1,29 +1,49 @@
-# purchase_order_management
+# Purchase Order Management System
 
-Demo - https://purchases-management.web.app
+Welcome to the Purchase Order Management System repository! This system aims to simplify and enhance the management of purchase orders.
+This is a very good example of CRUD operations with API manipulation and server configurations
+Follow the steps below to set it up on your local machine and start collaborating.
 
-Follow steps to start it on local machine
+## Demo
 
-1st step - Install Nodejs Latest LTS Version
+Explore the live demo: [Purchase Order Management Demo](https://purchases-management.web.app)
 
-2nd step - Install Angular Latest Version
+## Getting Started
 
-3rd step - Install MySQL and also import 'db.sql' file in your mysql database
-         - db.sql file can be found in root directory of project
+### Prerequisites
 
-4th step - Install dependencies of po_server and po_ui using 'npm i' command
+Before you begin, ensure that you have the following installed on your machine:
 
-         ** For installing dependencies follow these steps **
-         * For Server - 
-         - create .env file you can take refrence from env.js file
-         - $ cd po_server
-         - $ npm i
+1. [Node.js](https://nodejs.org/) - Latest LTS Version
+2. [Angular](https://angular.io/) - Latest Version
+3. [MySQL](https://www.mysql.com/) - Install MySQL and import the 'db.sql' file into your MySQL database. Find the 'db.sql' file in the root directory of the project.
 
-         * For UI - 
-         - $ cd ..
-         - $ cd po_ui
-         - $ npm i 
+### Installation
 
-5th step - now project is ready to start
+1. **Clone the Repository:**
 
-** Now you can start client and server code by using 'npm start' command  **
+   ```bash
+   git clone https://github.com/your-username/purchase_order_management.git
+   cd purchase_order_management
+   ```
+
+2.  **Install server dependencies
+   A) Install node packages
+   ```bash
+   cd po_server
+   npm i
+   ```
+   B) Create .env file (you can take refrence from env.js file)
+
+   C)
+   ```bash
+   npm start
+   ```
+
+5. **Install UI dependencies
+
+   ```bash
+   cd po_ui
+   npm i
+   npm start
+   ```
