@@ -27,22 +27,21 @@ Before you begin, ensure that you have the following installed on your machine:
    cd purchase_order_management
    ```
 
-2.  **Install Server Dependencies
-2.1   ***Install node packages
+2.  **Install node packages
       ```bash
       cd po_server
       npm i
       ```
-2.2   ***Make sure you have imported db.sql file in your mysql db
+3.  **Make sure you have imported db.sql file in your mysql db
    
-2.3   ***Create .env file (you can take refrence from env.js file)
+4   **Create .env file (you can take refrence from env.js file)
 
-2.4   Start Server
+5   ***Start Server
       ```bash
       npm start
       ```
 
-5. **Install UI Dependencies
+6. **Install UI Dependencies
 
    ```bash
    cd po_ui
