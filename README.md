@@ -20,31 +20,32 @@ Before you begin, ensure that you have the following installed on your machine:
 
 ### Installation
 
-1. **Clone The Repository:**
+1.   **Clone The Repository:**
 
-   ```bash
-   git clone https://github.com/your-username/purchase_order_management.git
-   cd purchase_order_management
-   ```
+      ```bash
+      git clone https://github.com/your-username/purchase_order_management.git
+      cd purchase_order_management
+      ```
 
-2.  **Install node packages:**
+2.   **Install node packages:**
       ```bash
       cd po_server
       npm i
       ```
-3.  **Make sure you have imported db.sql file in your mysql db:**
-   
-4   **Create .env file (you can take refrence from env.js file):**
-
-5   **Start Server:**
+      
+3.   **Start Server:**
       ```bash
       npm start
       ```
 
-6. **Install UI Dependencies**
+4.   **stall UI Dependencies**
 
-   ```bash
-   cd po_ui
-   npm i
-   npm start
-   ```
+      ```bash
+      cd po_ui
+      npm i
+      npm start
+      ```
+
+5.   **Reminder:**
+      (*) Make sure you have imported db.sql file in your mysql db
+      (*) Created .env file in po_server (you can take refrence from env.js file)
