@@ -4,10 +4,6 @@ Welcome to the Purchase Order Management System repository! This system aims to 
 This is a very good example of CRUD operations with API manipulation and server configurations
 Follow the steps below to set it up on your local machine and start collaborating.
 
-## Demo
-
-Explore the live demo: [Purchase Order Management Demo](https://purchases-management.web.app)
-
 ## Getting Started
 
 ### Prerequisites
@@ -38,7 +34,7 @@ Before you begin, ensure that you have the following installed on your machine:
       npm start
       ```
 
-4.   **stall UI Dependencies**
+4.   **Istall UI Dependencies**
 
       ```bash
       cd po_ui
